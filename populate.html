@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    </head>
+
+    <body>
+        <script>
+            var ref = new Firebase('https://cloudassign01.firebaseio.com/');
+            ref.set({
+                "Word": {
+                    "Egg": {
+                        "en": "Egg",
+                        "jp": "???"
+                    }
+                }
+            });
+            var wordRef = new Firebase('https://cloudassign01.firebaseio.com/Word');
+            var text = wordRef.once("value", function (snapshot) {
+                var data = snapshot.val();
+                // data equals { "name": { "first": "Fred", "last": "Flintstone" }, "age": 53 }
+                document.write(data.Egg.en);  // "Fred"
+                document.write(data.Egg.jp);  // 53
+            });
+        </script>
+        <h1>Hello Plunker!</h1>
+    </body>
+
+
+</html>
