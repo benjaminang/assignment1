@@ -1,10 +1,4 @@
-<%-- 
-    Document   : TranslaterView
-    Created on : Jan 28, 2016, 1:15:20 PM
-    Author     : Benjamin
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -80,14 +74,15 @@
                     </div>
 
                     <div class="menu">
-                        <a href="TranslaterView.jsp" class="item"><i class="big write icon"></i>Do a Translation</a>
-                        <a href="ProofreadView.jsp" class="item"><i class="big checkmark box icon"></i>Proofread</a>
+                        <a href="TranslatorView.html" class="item"><i class="big write icon"></i>Do a Translation</a>
+                        <a href="ProofreadView.html" class="item"><i class="big checkmark box icon"></i>Proofread</a>
                     </div>
                 </div>
                 <div class="shake-vertical shake-constant shake-constant--hover">
                     <a class="item">
-                        <i class="big comment icon"></i>
-                        Ask a Question!
+                        <a href="Translation.html" class="item">
+                            <i class="big comment icon"></i>Ask a Question!
+                        </a>
                     </a>
                 </div>
             </div>
