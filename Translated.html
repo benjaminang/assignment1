@@ -6,7 +6,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
         <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
         <script type="text/javascript">
 //auto expand textarea
             function adjust_textarea(h) {
@@ -115,26 +114,36 @@
 
                                 window.onload = function () {
                                     var word = getUrlVars()["word"];
+                                    var lang = getUrlVars()["lang"];
                                     var childRef = wordRef.child(word);
                                     childRef.once("value", function (snapshot) {
                                         var data = snapshot.val();
-                                        
+
                                         // data equals { "name": { "first": "Fred", "last": "Flintstone" }, "age": 53 }
                                         //document.write(data.Egg.jp);
                                         ;  // 53
                                         var jp_data = data.jp;
-                                        
+                                        var en_data = data.en;
+                                        var ch_data = data.ch;
+
                                         var text = "";
-                                        if(jp_data === undefined || jp_data === null){
+                                        if (jp_data === undefined || jp_data === null) {
                                             text = "Not found";
-                                        }else{
-                                            text = jp_data;
+                                        } else {
+                                            if (lang == "en") {
+                                                text = en_data;
+                                            } else if (lang == "ch") {
+                                                text = ch_data;
+                                            } else if (lang == "jp") {
+                                                text = jp_data;
+                                            }
                                         }
-                                        
+
                                         document.getElementById('textbox').value = text;
                                     });
 
                                 };
+
 
                             </script> 
 
@@ -142,151 +151,162 @@
                                 <p id="fooHolder"></p>
                                 <form action="Processed.html" method="get">
                                     <h1>Here's the translation!</h1>
+                                    <div class="ui massive transparent input">
                                     <input type="text" id="textbox" name="word" value="" >
-                                    <input type="submit" name="action" value="Accept" />
-                                    <input type="submit" name="action" value="Reject" />
-                                </form>
+                                    </div>
+                                    </div>
+
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="ui column row">
+                                        <div class="ui grid">
+                                            <div class="seven wide column">
+                                            </div>
+                                            <div class="nine wide column">
+
+                                                <input type="submit" class="ui green button" name="action" value="Accept" />
+                                                <input type="submit" class="ui red button" name="action" value="Reject" />
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui column row">
+                                        <div class="ui grid">
+                                            <div class="four wide column">
+
+                                            </div>
+                                            <div class="twelve wide column">
+                                                <div class="item">
+                                                    <div class="image">
+                                                        <img src="http://i.imgur.com/X2hf3yT.png" style="width:250px;height:300px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="ui column row">
+                                        <div>
+
+                                            <div class="ui grid">
+                                                <div class="four wide column"></div>
+                                                <div class="eight wide column">
+
+
+
+                                                </div>
+
+                                                <div class="four wide column">
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
 
                             </div>
 
                         </div>
-                    </div>
-                </div>
-                <div class="ui column row">
-                    <div class="ui grid">
-                        <div class="four wide column">
 
-                        </div>
-                        <div class="twelve wide column">
-                            <div class="item">
-                                <div class="image">
-                                    <img src="http://i.imgur.com/X2hf3yT.png" style="width:250px;height:300px;">
+
+
+
+                        <!--Start of all Modal Classes-->
+
+                        <div id="modalMessage" class="ui basic modal">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                <h1>Messages</h1>
+                            </div>
+                            <div class="image content">
+                                <div class="ui medium image">
+                                    <img src="http://i.imgur.com/PIeQnE1.png">
+                                </div>
+                                <div class="description">
+                                    <p><h2>Users may send mails to friends and receive alerts about new updates.</h2></p>
+                                    <div class="ui header" style="color: white">Coming soon..</div>
+                                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
+
                                 </div>
                             </div>
+                            <div class="actions">
+                                <button class="ui inverted orange button">Take me Back</button>
+                            </div>
                         </div>
+
+                        <div id="modalRanking" class="ui basic modal">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                <h1>Ranking</h1>
+                            </div>
+                            <div class="image content">
+                                <div class="ui medium image">
+                                    <img src="http://i.imgur.com/PIeQnE1.png">
+                                </div>
+                                <div class="description">
+                                    <p><h2>Users may check their Player Ranking and Scoreboard.</h2></p>
+                                    <div class="ui header" style="color: white">Coming soon..</div>
+                                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
+
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="ui inverted orange button">Take me Back</button>
+                            </div>
+                        </div>
+
+
+                        <div id="modalFriend" class="ui basic modal">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                <h1>Friend</h1> 
+                            </div>
+                            <div class="image content">
+                                <div class="ui medium image">
+                                    <img src="http://i.imgur.com/PIeQnE1.png">
+                                </div>
+                                <div class="description">
+                                    <p><h2>Add Friends and view friendlist</h2></p>
+                                    <div class="ui header" style="color: white">Coming soon..</div>
+                                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
+
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="ui inverted orange button">Take me Back</button>
+                            </div>
+                        </div>
+
+                        <div id="modalAccount" class="ui basic modal">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                <h1>My Account</h1> 
+                            </div>
+                            <div class="image content">
+                                <div class="ui medium image">
+                                    <img src="http://i.imgur.com/PIeQnE1.png">
+                                </div>
+                                <div class="description">
+                                    <p><h2>Manage Account and edit Profile</h2></p>
+                                    <div class="ui header" style="color: white">Coming soon..</div>
+                                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
+
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="ui inverted orange button">Take me Back</button>
+                            </div>
+                        </div>
+
+
                     </div>
 
-                </div>
-                <div class="ui column row">
-                    <div>
-
-                        <div class="ui grid">
-                            <div class="four wide column"></div>
-                            <div class="eight wide column">
-
-
-
-                            </div>
-
-                            <div class="four wide column">
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
 
 
 
 
-        <!--Start of all Modal Classes-->
-
-        <div id="modalMessage" class="ui basic modal">
-            <i class="close icon"></i>
-            <div class="header">
-                <h1>Messages</h1>
-            </div>
-            <div class="image content">
-                <div class="ui medium image">
-                    <img src="http://i.imgur.com/PIeQnE1.png">
-                </div>
-                <div class="description">
-                    <p><h2>Users may send mails to friends and receive alerts about new updates.</h2></p>
-                    <div class="ui header" style="color: white">Coming soon..</div>
-                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
-
-                </div>
-            </div>
-            <div class="actions">
-                <button class="ui inverted orange button">Take me Back</button>
-            </div>
-        </div>
-
-        <div id="modalRanking" class="ui basic modal">
-            <i class="close icon"></i>
-            <div class="header">
-                <h1>Ranking</h1>
-            </div>
-            <div class="image content">
-                <div class="ui medium image">
-                    <img src="http://i.imgur.com/PIeQnE1.png">
-                </div>
-                <div class="description">
-                    <p><h2>Users may check their Player Ranking and Scoreboard.</h2></p>
-                    <div class="ui header" style="color: white">Coming soon..</div>
-                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
-
-                </div>
-            </div>
-            <div class="actions">
-                <button class="ui inverted orange button">Take me Back</button>
-            </div>
-        </div>
-
-
-        <div id="modalFriend" class="ui basic modal">
-            <i class="close icon"></i>
-            <div class="header">
-                <h1>Friend</h1> 
-            </div>
-            <div class="image content">
-                <div class="ui medium image">
-                    <img src="http://i.imgur.com/PIeQnE1.png">
-                </div>
-                <div class="description">
-                    <p><h2>Add Friends and view friendlist</h2></p>
-                    <div class="ui header" style="color: white">Coming soon..</div>
-                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
-
-                </div>
-            </div>
-            <div class="actions">
-                <button class="ui inverted orange button">Take me Back</button>
-            </div>
-        </div>
-
-        <div id="modalAccount" class="ui basic modal">
-            <i class="close icon"></i>
-            <div class="header">
-                <h1>My Account</h1> 
-            </div>
-            <div class="image content">
-                <div class="ui medium image">
-                    <img src="http://i.imgur.com/PIeQnE1.png">
-                </div>
-                <div class="description">
-                    <p><h2>Manage Account and edit Profile</h2></p>
-                    <div class="ui header" style="color: white">Coming soon..</div>
-                    <p>Feature currently being developed. You will be notified about the launch of this feature.</p>
-
-                </div>
-            </div>
-            <div class="actions">
-                <button class="ui inverted orange button">Take me Back</button>
-            </div>
-        </div>
-
-
-    </div>
-
-
-
-
-
-</body>
-</html>
+                    </body>
+                    </html>
