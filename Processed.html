@@ -112,30 +112,42 @@
 
 
                                 //new Firebase('https://popping-heat-2290.firebaseio.com').once('value', function (snap) {
-                                    //console.log('I fetched a user!', snap.val());
+                                //console.log('I fetched a user!', snap.val());
                                 //    trans = snap.val();
                                 //});
-                                
-                                if(action == "Accept"){
-                                    //...
-                                }else if(action =="Reject"){
-                                    //...
-                                }
-                                
+
+
+                                //document.getElementById("comment").style.display = "none";
+                                //document.getElementById("comment").style.visibility = "hidden";
                                 window.onload = function () {
                                     //debug
-                                    document.getElementById('text').innerHTML = "You have selected : " + action;
+                                    //document.getElementById('text').innerHTML = "You have selected : " + action;
+                                    if (action == "Accept") {
+                                        //document.getElementById('text2').innerHTML = "Thank you for your input!";
+                                        //document.getElementById("cmt").style.visibility = "hidden";
+                                        //document.getElementById("lbl").style.visibility = "hidden";
+                                        //document.getElementById("cmtsub").style.visibility = "hidden";cmtfrm
+                                        //document.getElementById("cmtsub").style.display = 'none';
+                                        window.location = "Thanks.html";
+                                    }
+
                                 };
 
                             </script> 
 
                             <div class="speech"><p/>
-                                <p id="fooHolder"></p>
-                                <form action="Processed.html" method="get">
-                                    <h1 id="text"></h1>
-                                    
-                                </form>
 
+                                <form id="cmtfrm" class="ui reply form" action="Thanks.html" method="get">
+
+                                    <div style="margin-left: 10px;padding-right: 20px" class="ui big transparent input">
+
+
+                                        <input placeholder="Please enter a reason or related context" type="text" id="cmt" name="comment" value="" >
+
+
+                                    </div>            
+                                    <input type="submit" id="cmtsub" class="ui blue button" value="Submit!">
+                                </form>
                             </div>
 
                         </div>
@@ -163,7 +175,7 @@
                             <div class="four wide column"></div>
                             <div class="eight wide column">
 
-                               
+
 
                             </div>
 
