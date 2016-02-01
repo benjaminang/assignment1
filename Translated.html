@@ -109,14 +109,13 @@
                                 //var ref = new Firebase(word);
                                 //var trans = ""
 
-                                var wordRef = new Firebase('https://cloudassign01.firebaseio.com/Word');
-
-
                                 window.onload = function () {
+                                    
                                     var word = getUrlVars()["word"];
                                     var lang = getUrlVars()["lang"];
-                                    var childRef = wordRef.child(word);
-                                    childRef.once("value", function (snapshot) {
+                                    var wordRef = new Firebase('https://cloudassign01.firebaseio.com/Word/'+word);
+                                    //var childRef = wordRef.child(word);
+                                    wordRef.once("value", function (snapshot) {
                                         var data = snapshot.val();
 
                                         // data equals { "name": { "first": "Fred", "last": "Flintstone" }, "age": 53 }
